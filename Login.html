@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+</head>
+<body background="picha.jpg">
+    <h1>LOGIN FORM</h1>
+   <div>
+    <form style="color: black;">
+
+        <label for ="userName">UserName: </label>
+        <input type="text"  id="userName" name="userName">
+        <br>
+        <br>
+        <label for ="password">Password</label>
+        <input type="text" id="password" name="password">
+        <br>
+        <br>
+        <button id="login">Login</button>
+        <br>
+        <br>
+    </div>
+ </form>
+  <a href="Contact.html">Back to : previous page</a>
+<br>
+<br>
+<a href="Map.html">Go to : Contact Form</a>
+<div id="inform">
+</div>
+<style>
+ a {
+    color: red;
+}
+</style>
+</body>
+<script>
+    let form = document.querySelector("#login");
+    form.addEventListener("click",function(event){
+        event.preventDefault();
+        let UserName = document.getElementById("userName").value;
+        let password = document.getElementById("password").value;
+
+        if (UserName === "Eva" && password === "1234") {
+            let details = JSON.parse(localStorage.getItem("details"))||[];
+            let logins = "";
+            for(let l = 0;l <details.length;l++) {
+                logins += "<h1>" + (l+1) + "</h1>";
+                logins += "<p><strong>NAME:</strong>" + details[l].name + "</p>";
+                logins += "<p><strong>ADRESS:</strong>" + details[l].adress + "</p>";
+                logins += "<p><strong>EMAIL:</strong>" + details[l].email + "</p>";
+                logins += "<p><strong>COMMENTS:</strong>" + details[l].comments + "</p>";
+            };
+            document.getElementById("inform").innerHTML=logins;
+
+        }
+        else {
+            alert("invald userName and password");
+        };
+        
+    });
+</script>
+</html>
